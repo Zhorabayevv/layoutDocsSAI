@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display;=swap"
+          rel="stylesheet"
+  />
+  <title>Official Memo</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      width: 595px;
+      max-width: 595px;
+      height: 100%;
+      margin: 0 auto;
+      padding: 0;
+      font-family: "Times New Roman", Times, serif;
+      color: #000;
+      background-color: #fff;
+      font-size: 14px;
+    }
+    p {
+      margin: 0;
+    }
+    table {
+      width: 100%;
+      background-color: #ffffff;
+      border-collapse: collapse;
+      color: #000000;
+      margin-bottom: 32px;
+      border: 1px solid #000000;
+      font-size: 12px;
+    }
+    table td,
+    table th {
+      border: 1px solid #000000;
+      padding: 4px;
+      text-align: inherit;
+    }
+    table thead {
+      background-color: #ffffff;
+    }
+    .page-class {
+      min-height: 100vh;
+    }
+    @page {
+      margin-bottom: 100px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="page-class">
+
+  <h1>Ход исполнения</h1>
+
+  <div style="margin-bottom: 14px">
+    <div style="display: inline-block; margin-bottom: 12px">
+      <p style="display: inline-block; margin: 0; font-weight: bold">
+        Инициатор:
+      </p>
+      <p style="display: inline-block; margin: 0">{{.Creator}}</p>
+    </div>
+
+    <div style="width: 100%">
+      <div style="display: inline-block">
+        <p style="display: inline-block; margin: 0; font-weight: bold">
+          Дата начала:
+        </p>
+        <p style="display: inline-block; margin: 0">{{.CreatedAt.Format "02.01.2006"}}</p>
+      </div>
+
+      <div style="display: inline-block; float: right">
+        <p style="display: inline-block; margin: 0; font-weight: 700">
+          Срок до:
+        </p>
+        <p style="display: inline-block; margin: 0">{{.Deadline.Format "02.01.2006"}}</p>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+    {{range .RouterData}}
+      <h2>{{.Action.Name}}</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Участник</th>
+            <th>Комментарий</th>
+            <th>Дата</th>
+            <th style="width: 110px">Подпись</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          {{range .Participants}}
+
+            <tr>
+              <td>{{.Data.Name}}</td>
+              <td>{{.Decision.Comment}}</td>
+              <td>{{.Decision.Date}}</td>
+
+              {{if .Decision.ByEDS}}
+                <td><img style="width: 100px; max-width: 100px; min-width: 100px" src="data:image/png;base64, {{.Decision.Result}}"/></td>
+              {{else}}
+                <td>{{.Decision.Result}}</td>
+              {{end}}
+            </tr>
+
+          {{end}}
+
+        </tbody>
+      </table>
+
+    {{end}}
+
+</body>
+</html>
