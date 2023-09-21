@@ -86,11 +86,12 @@
         background-color: #ffffff;
       }
 
-      .footer {
+      /* .footer {
         position: fixed;
         bottom: 0;
         padding: 10px;
-      }
+      } */
+
       .row {
         margin-bottom: 12px;
       }
@@ -105,35 +106,18 @@
       }
 
       .tables__header {
-        margin-bottom: 9px;
         color: #000000;
         font-size: 20px;
         font-weight: 700;
+        margin: 20px 0 9px 0;
+      }
+
+      main {
+        padding: 50px 0;
       }
 
       @page {
-        margin-bottom: 100px;
-      }
-
-      @media print {
-        body {
-          display: flex;
-          flex-direction: column;
-        }
-
-        /* main {
-          padding: 300px 0;
-        } */
-
-        /* table {
-          page-break-inside: avoid;
-        } */
-
-        footer {
-          position: fixed;
-          top: 95%;
-          /* bottom: -300px; */
-        }
+        margin-bottom: 150px;
       }
     </style>
   </head>
@@ -141,7 +125,7 @@
     <main>
       <!-- <div> -->
       <h1 class="f700" style="font-size: 25px">Ход исполнения</h1>
-      <div class="header" style="margin-bottom: 20px">
+      <div class="header">
         <div class="dsc row">
           <div class="df">
             <p class="f700 col">Наименование</p>
@@ -327,13 +311,6 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Согласовано</td>
-              <td>13.06.2023 12:20</td>
-              <td>Мельникова Арина Тимофеевна</td>
-              <td></td>
-              <td>Согласовано</td>
-            </tr>
             <tr>
               <td>Согласовано</td>
               <td>13.06.2023 09:30</td>
@@ -847,12 +824,9 @@
         </table>
       </div>
 
-      <p class="f700 f12" style="margin-bottom: 6px">
-        Перейти к карточке документа
-      </p>
       <!-- </div> -->
     </main>
-    <footer class="footer df">
+    <div class="footer df">
       <div class="df">
         <div>
           <svg
@@ -927,6 +901,6 @@
           <p class="f4">900213695123</p>
         </div>
       </div>
-    </footer>
+    </div>
   </body>
 </html>
